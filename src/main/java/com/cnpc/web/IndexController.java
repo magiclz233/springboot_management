@@ -67,10 +67,7 @@ public class IndexController {
        }
        User user = repository.findByUserName( loginParam.getUserName() );
        if(user == null){
-           user = repository.findByEmail( loginParam.getUserName() );
-       }
-       if(user == null){
-           model.addAttribute( "errorMsg","用户名不存在" );
+           model.addAttribute( "errorMsg","用户名不存在,请注册" );
            return "login";
        }else if(!user.getPassword().equals( loginParam.getPassword() )){
            model.addAttribute( "errorMsg","密码错误！" );
